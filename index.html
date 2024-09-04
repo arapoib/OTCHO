@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTCHO</title>
+    <style>
+        /* CSS for full-page background image */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background-image: url('michael asher2.jpg'); /* Replace with your image URL */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            display: flex; /* Use flexbox to center the grid container */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            position: relative; /* Set position to relative for absolute positioning of children */
+        }
+
+        /* CSS for the top-left image */
+        .top-left-container {
+            position: absolute; /* Position the image relative to the body */
+            top: 0; /* Position it at the top */
+            left: 0; /* Position it on the left */
+            margin: 10px; /* Optional: Add margin if you want some space from the edges */
+            overflow: hidden; /* Ensure particles stay within bounds */
+        }
+
+        .top-left-image {
+            width: 75px; /* Optional: Set the width of the image */
+            height: auto; /* Maintain the aspect ratio */
+            transition: opacity 0.5s ease;
+        }
+
+        /* CSS for disintegration effect */
+        .top-left-container:hover .top-left-image {
+            animation: disintegrate 1s forwards;
+        }
+
+        @keyframes disintegrate {
+            0% {
+                opacity: 1;
+                transform: skew(0);
+            }
+            100% {
+                opacity: 0;
+                transform: skew(30deg, 20deg);
+            }
+        }
+
+        /* CSS for text box */
+        .text-box {
+            width: 300px;
+            height: 300px;
+            display: none; /* Hidden by default */
+            position: aboslute;
+            top: 50%;
+            left: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-family: 'Times New Roman', serif;
+            font-size: 12px; /* Slightly larger font size for better readability */
+            color: #ffffff;
+            text-align: left;
+            max-width: 80vw; /* Limit width to fit within viewport */
+            max-height: 80vh; /* Limit height to fit within viewport */
+            overflow: hidden; /* Add scrollbars if content overflows */
+            box-sizing: border-box;
+        }
+        .text-box p {
+            margin:0;
+            line-height: 1.5;
+        }
+
+        /* Grid container styling */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5 columns layout */
+            gap: 20px; /* Space between grid items */
+        }
+
+        /* Grid item styling */
+        .grid-item {
+            width: 150px; /* Set the width of the images */
+            height: auto; /* Maintain aspect ratio */
+            cursor: pointer; /* Make the images clickable */
+            transition: transform 0.2s; /* Add a slight animation on hover */
+            filter: drop-shadow(1px 1px 1px #000000);
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05); /* Slightly enlarge the image on hover */
+        }
+
+        /* Footer styling */
+        footer {
+            position: absolute; /* Position the footer relative to the body */
+            bottom: 10px; /* Position it at the bottom */
+            width: 50%; /* Make the footer span the full width of the page */
+            text-align: justify; /* Align the text */
+            font-family: 'Times New Roman', serif; /* Set the font to Times New Roman */
+            font-size: 10px; /* Small font size */
+            color: #ffffff; /* Text color */
+            padding: 5px 0; /* Padding for better spacing */
+            opacity: 0.3; /* Slightly transparent background */
+            left: 50px; /* Position from the left */
+        }
+    </style>
+</head>
+<body>
+    <div class="top-left-container">
+        <img src="otcho logo-01.png" alt="Top Left Image" class="top-left-image" onmouseover="showTextBox()">
+        <div class="text-box" id="text-box">OTCHO is a printed magazine for the fingerboard scene. Initiated in 2017 by Andrew Hill. First interviews were conducted in 2016, first issue released in 2017. The community is still young and underground, meaning there is little published information available. I conduct research by collecting oral history and experiences from members of the community as well as digitally documenting at fingerboard events. Due to the fast paced nature of the internet, much of fingerboarding history has been lost. Producing serialised, physical documentation of the community is key to preserving its background. After publishing 6 issues, OTCHO continues to share the untold history of fingerboarding.
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <img src="OTCHO 1 COVER.jpg" alt="OTCHO Issue 1" class="grid-item" onclick="openPDF('OTCHO1.pdf')">
+        <img src="OTCHO 2 COVER.jpg" alt="OTCHO Issue 2" class="grid-item" onclick="openPDF('OTCHO2.pdf')">
+        <img src="OTCHO3_COVER.png" alt="OTCHO Issue 3" class="grid-item" onclick="openPDF('OTCHO3.pdf')">
+        <img src="OTCHO 4 COVER.png" alt="OTCHO Issue 4" class="grid-item" onclick="openPDF('OTCHO4.pdf')">
+        <img src="OTCHO 5 COVER.png" alt="OTCHO Issue 5" class="grid-item" onclick="openPDF('OTCHO5.pdf')">
+        <!--<img src="OTCHO6_COVER.jpg" alt="OTCHO Issue 6" class="grid-item" onclick="openPDF('OTCHO6.pdf')">
+        <img src="OTCHO7_COVER.jpg" alt="OTCHO Issue 7" class="grid-item" onclick="openPDF('OTCHO7.pdf')">
+        <img src="OTCHO8_COVER.jpg" alt="OTCHO Issue 8" class="grid-item" onclick="openPDF('OTCHO8.pdf')">
+        <img src="OTCHO9_COVER.jpg" alt="OTCHO Issue 9" class="grid-item" onclick="openPDF('OTCHO9.pdf')">
+        <img src="OTCHO10_COVER.jpg" alt="OTCHO Issue 10" class="grid-item" onclick="openPDF('OTCHO10.pdf')"> -->
+    </div>
+
+    <footer>
+        Background image Gladys K. Montgomery Art Center, Pomona College, Claremont, California, USA, February 13–March 8, 1970, viewing out of gallery toward street from small triangular area. Photo taken with daylight. Photograph by Frank J. Thomas, courtesy of the Frank J. Thomas Archive. © Michael Asher Foundation.
+    </footer>
+
+    <script>
+        function openPDF(pdfName) {
+            const pdfUrl = pdfName + "#pagemode=none";
+            window.open(pdfUrl, '_blank');
+        }
+
+        function showTextBox() {
+            const textBox = document.getElementById('text-box');
+            textBox.style.display = 'block';
+        }
+
+    </script>
+</body>
+</html>
