@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTCHO</title>
@@ -30,7 +31,7 @@
             top: 0; /* Position it at the top */
             left: 0; /* Position it on the left */
             margin: 10px; /* Optional: Add margin if you want some space from the edges */
-            overflow: hidden; /* Ensure particles stay within bounds */
+            overflow: visible; /* Allow the text box to be fully visible */
         }
 
         .top-left-image {
@@ -41,7 +42,7 @@
 
         /* CSS for disintegration effect */
         .top-left-container:hover .top-left-image {
-            animation: disintegrate 1s forwards;
+            animation: disintegrate 0.3s forwards;
         }
 
         @keyframes disintegrate {
@@ -57,13 +58,14 @@
 
         /* CSS for text box */
         .text-box {
-            width: 300px;
-            height: 300px;
-            display: none; /* Hidden by default */
-            position: aboslute;
-            top: 50%;
-            left: 50%;
+            width: 300px; /* Ensure the text box is wide enough */
+            height: auto; /* Allow height to adjust based on content */
+            opacity: 0; /* Hidden by default */
+            position: absolute;
+            top: 100%; /* Position the text box below the image */
+            left: 0;
             padding: 10px;
+            background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent background for readability */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             font-family: 'Times New Roman', serif;
             font-size: 12px; /* Slightly larger font size for better readability */
@@ -71,11 +73,17 @@
             text-align: left;
             max-width: 80vw; /* Limit width to fit within viewport */
             max-height: 80vh; /* Limit height to fit within viewport */
-            overflow: hidden; /* Add scrollbars if content overflows */
+            overflow-y: auto; /* Add vertical scroll if content overflows */
             box-sizing: border-box;
+            transition: opacity 0.3s ease; /* Smooth transition */
         }
+
+        .top-left-container:hover .text-box {
+            opacity: 1; /* Show the text box on hover */
+        }
+
         .text-box p {
-            margin:0;
+            margin: 0;
             line-height: 1.5;
         }
 
@@ -116,8 +124,9 @@
 </head>
 <body>
     <div class="top-left-container">
-        <img src="otcho logo-01.png" alt="Top Left Image" class="top-left-image" onmouseover="showTextBox()">
-        <div class="text-box" id="text-box">OTCHO is a printed magazine for the fingerboard scene. Initiated in 2017 by Andrew Hill. First interviews were conducted in 2016, first issue released in 2017. The community is still young and underground, meaning there is little published information available. I conduct research by collecting oral history and experiences from members of the community as well as digitally documenting at fingerboard events. Due to the fast paced nature of the internet, much of fingerboarding history has been lost. Producing serialised, physical documentation of the community is key to preserving its background. After publishing 6 issues, OTCHO continues to share the untold history of fingerboarding.
+        <img src="otcho logo-01.png" alt="Top Left Image" class="top-left-image">
+        <div class="text-box" id="text-box">
+            <p>OTCHO is a printed magazine dedicated to the fingerboard scene, initiated by Andrew Hill in 2017. As a relatively young and underground subculture, the fingerboard community has limited published resources. My research methodology includes the collection of oral histories and personal narratives from community members, supplemented by photo documentation at fingerboard events. Given the rapid evolution of online platforms, significant portions of fingerboarding history have been lost. Therefore, the production of serialized, physical documentation is essential for preserving the community’s historical record. To date, OTCHO has published six issues, continuing its mission to chronicle the previously untold history of fingerboarding.</p>
         </div>
     </div>
 
@@ -127,11 +136,6 @@
         <img src="OTCHO3_COVER.png" alt="OTCHO Issue 3" class="grid-item" onclick="openPDF('OTCHO3.pdf')">
         <img src="OTCHO 4 COVER.png" alt="OTCHO Issue 4" class="grid-item" onclick="openPDF('OTCHO4.pdf')">
         <img src="OTCHO 5 COVER.png" alt="OTCHO Issue 5" class="grid-item" onclick="openPDF('OTCHO5.pdf')">
-        <!--<img src="OTCHO6_COVER.jpg" alt="OTCHO Issue 6" class="grid-item" onclick="openPDF('OTCHO6.pdf')">
-        <img src="OTCHO7_COVER.jpg" alt="OTCHO Issue 7" class="grid-item" onclick="openPDF('OTCHO7.pdf')">
-        <img src="OTCHO8_COVER.jpg" alt="OTCHO Issue 8" class="grid-item" onclick="openPDF('OTCHO8.pdf')">
-        <img src="OTCHO9_COVER.jpg" alt="OTCHO Issue 9" class="grid-item" onclick="openPDF('OTCHO9.pdf')">
-        <img src="OTCHO10_COVER.jpg" alt="OTCHO Issue 10" class="grid-item" onclick="openPDF('OTCHO10.pdf')"> -->
     </div>
 
     <footer>
@@ -143,12 +147,6 @@
             const pdfUrl = pdfName + "#pagemode=none";
             window.open(pdfUrl, '_blank');
         }
-
-        function showTextBox() {
-            const textBox = document.getElementById('text-box');
-            textBox.style.display = 'block';
-        }
-
     </script>
 </body>
 </html>
